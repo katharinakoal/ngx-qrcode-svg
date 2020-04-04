@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-qrcode-svg": [
+        "dist/ngx-qrcode-svg/ngx-qrcode-svg",
+        "dist/ngx-qrcode-svg"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
