@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
+    "start": "ng serve --project=ngx-qrcode-demo",
+    "build:demo": "ng build --project=ngx-qrcode-svg-demo",
+    "build:lib": "ng build --project=ngx-qrcode-svg",
+    "test:demo": "ng test --project=ngx-qrcode-svg-demo",
+    "test:lib": "ng test --project=ngx-qrcode-svg",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
