@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --project=ngx-qrcode-demo",
+    "start": "ng serve --project=ngx-qrcode-svg-demo",
     "build:demo": "ng build --project=ngx-qrcode-svg-demo",
     "build:lib": "ng build --project=ngx-qrcode-svg",
     "test:demo": "ng test --project=ngx-qrcode-svg-demo",
@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~9.1.0",
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
+    "qrcode": "^1.4.4",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

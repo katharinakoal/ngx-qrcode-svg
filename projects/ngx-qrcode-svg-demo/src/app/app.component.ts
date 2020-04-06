@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ngx-qrcode-svg-demo';
-  qrData: string;
+  qrData = 'test';
   errorCorrectionLevel: string;
 }
