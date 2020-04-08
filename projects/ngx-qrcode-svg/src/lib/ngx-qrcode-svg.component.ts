@@ -15,7 +15,8 @@ import QRCode from 'qrcode';
   ],
 })
 export class QRCodeSVGComponent implements AfterViewInit, OnChanges {
-  @Input() text: string;
+  @Input() value: string;
+  @Input() errorCorrectionLevel?: 'L' | 'M' | 'Q' | 'H';
 
   private domParser = new DOMParser();
 
@@ -34,13 +35,13 @@ export class QRCodeSVGComponent implements AfterViewInit, OnChanges {
       this.renderer.removeChild(this.element.nativeElement, node)
     );
 
-    if (!this.text) {
+    if (!this.value) {
       return;
     }
 
     QRCode.toString(
-      this.text,
-      { type: 'svg', errorCorrectionLevel: 'Q', margin: 0 },
+      this.value,
+      { type: 'svg', errorCorrectionLevel: this.errorCorrectionLevel, margin: 0 },
       (_, qrString) => {
         const element = this.domParser.parseFromString(qrString, 'image/svg+xml');
         this.renderer.appendChild(this.element.nativeElement, element.childNodes?.[0]);
