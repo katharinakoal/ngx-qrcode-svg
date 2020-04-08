@@ -2,9 +2,11 @@
   class="qrcode"
   [value]="qrData"
   [errorCorrectionLevel]="errorCorrectionLevel"
+  [margin]="margin"
 ></ngx-qrcode-svg>
 <form>
-  <input [(ngModel)]="qrData" name="qrDataInput" type="text" />
+  <label for="qrData">Input</label>
+  <input id="qrData" [(ngModel)]="qrData" name="qrDataInput" type="text" />
 
   <div>
     <label for="ecl-L">L</label>
@@ -43,6 +45,9 @@
       [(ngModel)]="errorCorrectionLevel"
     />
   </div>
+
+  <label for="margin">Margin</label>
+  <input id="margin" [(ngModel)]="margin" name="margin" type="number" />
 
   <p>Input:{{ qrData }}</p>
   <p>ECL: {{ errorCorrectionLevel }}</p>

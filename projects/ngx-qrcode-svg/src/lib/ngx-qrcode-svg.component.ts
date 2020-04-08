@@ -17,6 +17,7 @@ import QRCode from 'qrcode';
 export class QRCodeSVGComponent implements AfterViewInit, OnChanges {
   @Input() value: string;
   @Input() errorCorrectionLevel?: 'L' | 'M' | 'Q' | 'H';
+  @Input() margin?: number;
 
   private domParser = new DOMParser();
 
@@ -41,7 +42,11 @@ export class QRCodeSVGComponent implements AfterViewInit, OnChanges {
 
     QRCode.toString(
       this.value,
-      { type: 'svg', errorCorrectionLevel: this.errorCorrectionLevel, margin: 0 },
+      {
+        type: 'svg',
+        errorCorrectionLevel: this.errorCorrectionLevel ?? 'M',
+        margin: this.margin ?? 0,
+      },
       (_, qrString) => {
         const element = this.domParser.parseFromString(qrString, 'image/svg+xml');
         this.renderer.appendChild(this.element.nativeElement, element.childNodes?.[0]);

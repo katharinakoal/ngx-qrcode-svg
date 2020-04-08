@@ -9,4 +9,5 @@ export class AppComponent {
   title = 'ngx-qrcode-svg-demo';
   qrData = 'test';
   errorCorrectionLevel = 'Q';
+  margin = 0;
 }
