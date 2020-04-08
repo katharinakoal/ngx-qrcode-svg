@@ -1,22 +1,48 @@
-<ngx-qrcode-svg class="qrcode" [text]="qrData"></ngx-qrcode-svg>
+<ngx-qrcode-svg
+  class="qrcode"
+  [value]="qrData"
+  [errorCorrectionLevel]="errorCorrectionLevel"
+></ngx-qrcode-svg>
 <form>
   <input [(ngModel)]="qrData" name="qrDataInput" type="text" />
-  <label for="ecl-H">H</label>
-  <input
-    type="radio"
-    id="ecl-H"
-    name="errorCorrectionLevel"
-    value="H"
-    [(ngModel)]="errorCorrectionLevel"
-  />
-  <label for="ecl-Q">Q</label>
-  <input
-    type="radio"
-    id="ecl-Q"
-    name="errorCorrectionLevel"
-    value="Q"
-    [(ngModel)]="errorCorrectionLevel"
-  />
+
+  <div>
+    <label for="ecl-L">L</label>
+    <input
+      type="radio"
+      id="ecl-L"
+      name="errorCorrectionLevel"
+      value="L"
+      [(ngModel)]="errorCorrectionLevel"
+    />
+
+    <label for="ecl-M">M</label>
+    <input
+      type="radio"
+      id="ecl-M"
+      name="errorCorrectionLevel"
+      value="M"
+      [(ngModel)]="errorCorrectionLevel"
+    />
+
+    <label for="ecl-Q">Q</label>
+    <input
+      type="radio"
+      id="ecl-Q"
+      name="errorCorrectionLevel"
+      value="Q"
+      [(ngModel)]="errorCorrectionLevel"
+    />
+
+    <label for="ecl-H">H</label>
+    <input
+      type="radio"
+      id="ecl-H"
+      name="errorCorrectionLevel"
+      value="H"
+      [(ngModel)]="errorCorrectionLevel"
+    />
+  </div>
 
   <p>Input:{{ qrData }}</p>
   <p>ECL: {{ errorCorrectionLevel }}</p>
