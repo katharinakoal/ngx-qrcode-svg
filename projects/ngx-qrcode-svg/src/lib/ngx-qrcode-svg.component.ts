@@ -17,15 +17,10 @@ import type { ErrorCorrectionLevel, QRCodeData } from './ngx-qrcode-svg.types';
 })
 export class QRCodeSVGComponent implements OnChanges {
   @Input() value: string;
-  @Input() errorCorrectionLevel?: ErrorCorrectionLevel;
-  @Input() margin?: number;
-
-  private get options() {
-    return {
-      errorCorrectionLevel: this.errorCorrectionLevel ?? 'M',
-      margin: this.margin ?? 0,
-    };
-  }
+  @Input() errorCorrectionLevel: ErrorCorrectionLevel = 'Q';
+  @Input() margin = 0;
+  @Input() color = 'black';
+  @Input() backgroundColor = 'white';
 
   constructor(private renderer: Renderer2, private element: ElementRef) {}
 
@@ -42,12 +37,15 @@ export class QRCodeSVGComponent implements OnChanges {
       return;
     }
 
-    const { modules }: QRCodeData = QRCode.create(this.value, this.options);
+    const { modules }: QRCodeData = QRCode.create(this.value, {
+      errorCorrectionLevel: this.errorCorrectionLevel,
+      margin: this.margin,
+    });
     this.renderSVG(modules.data, modules.size);
   }
 
   private renderSVG(data: Uint8Array, size: number) {
-    const elementSize = size + this.options.margin * 2;
+    const elementSize = size + this.margin * 2;
 
     const svgElement = this.renderer.createElement('svg', 'svg');
     this.renderer.setAttribute(svgElement, 'xmlns', 'http://www.w3.org/2000/svg');
@@ -56,12 +54,12 @@ export class QRCodeSVGComponent implements OnChanges {
 
     const backGroundElement = this.renderer.createElement('path', 'svg');
     this.renderer.setAttribute(backGroundElement, 'd', `M0 0h${elementSize}v${elementSize}H0z`);
-    this.renderer.setStyle(backGroundElement, 'fill', '#ffffff');
+    this.renderer.setStyle(backGroundElement, 'fill', this.backgroundColor);
     this.renderer.appendChild(svgElement, backGroundElement);
 
     const codeElement = this.renderer.createElement('path', 'svg');
     this.renderer.setAttribute(codeElement, 'd', this.createPath(data, size, this.margin));
-    this.renderer.setStyle(codeElement, 'stroke', '#000000');
+    this.renderer.setStyle(codeElement, 'stroke', this.color);
     this.renderer.appendChild(svgElement, codeElement);
 
     this.renderer.appendChild(this.element.nativeElement, svgElement);
