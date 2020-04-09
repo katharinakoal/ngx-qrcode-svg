@@ -1,16 +1,9 @@
 import { Component, Input, ElementRef, OnChanges, Renderer2 } from '@angular/core';
 import QRCode from 'qrcode';
-
-type QRCode = {
-  modules: { size: number; data: Uint8Array; reservedBit: Uint8Array }; // Bitmatrix class with modules data
-  version: number; // Calculated QR Code version
-  errorCorrectionLevel: { bit: number }; // Error Correction Level
-  maskPattern: number; // Calculated Mask pattern
-  segments: any; // Generated segments
-};
+import type { ErrorCorrectionLevel, QRCodeData } from './ngx-qrcode-svg.types';
 
 @Component({
-  selector: 'ngx-qrcode-svg',
+  selector: 'qrcode-svg',
   template: '',
   styles: [
     `
@@ -24,7 +17,7 @@ type QRCode = {
 })
 export class QRCodeSVGComponent implements OnChanges {
   @Input() value: string;
-  @Input() errorCorrectionLevel?: 'L' | 'M' | 'Q' | 'H';
+  @Input() errorCorrectionLevel?: ErrorCorrectionLevel;
   @Input() margin?: number;
 
   private get options() {
@@ -49,9 +42,8 @@ export class QRCodeSVGComponent implements OnChanges {
       return;
     }
 
-    const rawData = QRCode.create(this.value, this.options) as QRCode;
-
-    this.renderSVG(rawData.modules.data, rawData.modules.size);
+    const { modules }: QRCodeData = QRCode.create(this.value, this.options);
+    this.renderSVG(modules.data, modules.size);
   }
 
   private renderSVG(data: Uint8Array, size: number) {
@@ -94,7 +86,6 @@ export class QRCodeSVGComponent implements OnChanges {
 
         if (!(index > 0 && col > 0 && data?.[index - 1])) {
           path += newRow ? `M${col + margin} ${0.5 + row + margin}` : `m${moveBy} 0`;
-
           moveBy = 0;
           newRow = false;
         }
