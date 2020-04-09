@@ -7,7 +7,7 @@
       "projectType": "library",
       "root": "projects/ngx-qrcode-svg",
       "sourceRoot": "projects/ngx-qrcode-svg/src",
-      "prefix": "ngx",
+      "prefix": "qrcode",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -36,9 +36,7 @@
               "projects/ngx-qrcode-svg/tsconfig.lib.json",
               "projects/ngx-qrcode-svg/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -63,9 +61,7 @@
               "projects/ngx-qrcode-svg-demo/src/favicon.ico",
               "projects/ngx-qrcode-svg-demo/src/assets"
             ],
-            "styles": [
-              "projects/ngx-qrcode-svg-demo/src/styles.css"
-            ],
+            "styles": ["projects/ngx-qrcode-svg-demo/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -127,9 +123,7 @@
               "projects/ngx-qrcode-svg-demo/src/favicon.ico",
               "projects/ngx-qrcode-svg-demo/src/assets"
             ],
-            "styles": [
-              "projects/ngx-qrcode-svg-demo/src/styles.css"
-            ],
+            "styles": ["projects/ngx-qrcode-svg-demo/src/styles.css"],
             "scripts": []
           }
         },
@@ -141,9 +135,7 @@
               "projects/ngx-qrcode-svg-demo/tsconfig.spec.json",
               "projects/ngx-qrcode-svg-demo/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -159,7 +151,8 @@
           }
         }
       }
-    }},
+    }
+  },
   "cli": {
     "analytics": "9894d99c-8d12-4f89-b194-6694602237c5"
   },
