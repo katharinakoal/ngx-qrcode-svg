@@ -1,55 +1,75 @@
 <qrcode-svg
   class="qrcode"
-  [value]="qrData"
+  [value]="value"
   [errorCorrectionLevel]="errorCorrectionLevel"
   [margin]="margin"
-  color="blue"
+  [color]="color"
+  [backgroundColor]="backgroundColor"
 ></qrcode-svg>
 <form>
-  <label for="qrData">Input</label>
-  <input id="qrData" [(ngModel)]="qrData" name="qrDataInput" type="text" />
-
-  <div>
-    <label for="ecl-L">L</label>
-    <input
-      type="radio"
-      id="ecl-L"
-      name="errorCorrectionLevel"
-      value="L"
-      [(ngModel)]="errorCorrectionLevel"
-    />
-
-    <label for="ecl-M">M</label>
-    <input
-      type="radio"
-      id="ecl-M"
-      name="errorCorrectionLevel"
-      value="M"
-      [(ngModel)]="errorCorrectionLevel"
-    />
-
-    <label for="ecl-Q">Q</label>
-    <input
-      type="radio"
-      id="ecl-Q"
-      name="errorCorrectionLevel"
-      value="Q"
-      [(ngModel)]="errorCorrectionLevel"
-    />
-
-    <label for="ecl-H">H</label>
-    <input
-      type="radio"
-      id="ecl-H"
-      name="errorCorrectionLevel"
-      value="H"
-      [(ngModel)]="errorCorrectionLevel"
-    />
+  <div class="form-element">
+    <label for="value">Input</label>
+    <input id="value" [(ngModel)]="value" name="value" type="text" />
   </div>
 
-  <label for="margin">Margin</label>
-  <input id="margin" [(ngModel)]="margin" name="margin" type="number" />
+  <div class="form-element">
+    <label>Error Correction Level</label>
+    <div>
+      <label for="ecl-L">L</label>
+      <input
+        type="radio"
+        id="ecl-L"
+        name="errorCorrectionLevel"
+        value="L"
+        [(ngModel)]="errorCorrectionLevel"
+      />
 
-  <p>Input:{{ qrData }}</p>
-  <p>ECL: {{ errorCorrectionLevel }}</p>
+      <label for="ecl-M">M</label>
+      <input
+        type="radio"
+        id="ecl-M"
+        name="errorCorrectionLevel"
+        value="M"
+        [(ngModel)]="errorCorrectionLevel"
+      />
+
+      <label for="ecl-Q">Q</label>
+      <input
+        type="radio"
+        id="ecl-Q"
+        name="errorCorrectionLevel"
+        value="Q"
+        [(ngModel)]="errorCorrectionLevel"
+      />
+
+      <label for="ecl-H">H</label>
+      <input
+        type="radio"
+        id="ecl-H"
+        name="errorCorrectionLevel"
+        value="H"
+        [(ngModel)]="errorCorrectionLevel"
+      />
+    </div>
+  </div>
+
+  <div class="form-element">
+    <label for="margin">Margin</label>
+    <input id="margin" [(ngModel)]="margin" name="margin" type="number" />
+  </div>
+
+  <div class="form-element">
+    <label for="color">Color</label>
+    <input type="color" id="color" name="color" [(ngModel)]="color" />
+  </div>
+
+  <div class="form-element">
+    <label for="background-color">Background Color</label>
+    <input
+      type="color"
+      id="background-color"
+      name="background-color"
+      [(ngModel)]="backgroundColor"
+    />
+  </div>
 </form>

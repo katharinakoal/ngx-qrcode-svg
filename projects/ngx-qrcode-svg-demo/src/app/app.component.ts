@@ -6,8 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'ngx-qrcode-svg-demo';
-  qrData = 'test';
+  value = 'test';
   errorCorrectionLevel = 'Q';
-  margin = 1;
+  margin = 0;
+  color = '#000000';
+  backgroundColor = '#ffffff';
 }
