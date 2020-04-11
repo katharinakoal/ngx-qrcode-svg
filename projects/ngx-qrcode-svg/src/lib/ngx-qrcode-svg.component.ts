@@ -17,10 +17,13 @@ import type { ErrorCorrectionLevel, QRCodeData } from './ngx-qrcode-svg.types';
 })
 export class QRCodeSVGComponent implements OnChanges {
   @Input() value: string;
-  @Input() errorCorrectionLevel: ErrorCorrectionLevel = 'Q';
-  @Input() margin = 0;
-  @Input() color = 'black';
-  @Input() backgroundColor = 'white';
+  @Input() errorCorrectionLevel?: ErrorCorrectionLevel = 'Q';
+  // tslint:disable-next-line: no-inferrable-types
+  @Input() margin?: number = 0;
+  // tslint:disable-next-line: no-inferrable-types
+  @Input() color?: string = 'black';
+  // tslint:disable-next-line: no-inferrable-types
+  @Input() backgroundColor?: string = 'white';
 
   constructor(private renderer: Renderer2, private element: ElementRef) {}
 
@@ -28,12 +31,12 @@ export class QRCodeSVGComponent implements OnChanges {
     this.createQRCode();
   }
 
-  private createQRCode() {
+  private createQRCode(): void {
     this.element.nativeElement.childNodes.forEach((node) =>
       this.renderer.removeChild(this.element.nativeElement, node)
     );
 
-    if (!this.value) {
+    if (!this.sanitizeInputs()) {
       return;
     }
 
@@ -44,7 +47,7 @@ export class QRCodeSVGComponent implements OnChanges {
     this.renderSVG(modules.data, modules.size);
   }
 
-  private renderSVG(data: Uint8Array, size: number) {
+  private renderSVG(data: Uint8Array, size: number): void {
     const elementSize = size + this.margin * 2;
 
     const svgElement = this.renderer.createElement('svg', 'svg');
@@ -98,5 +101,38 @@ export class QRCodeSVGComponent implements OnChanges {
     });
 
     return path;
+  }
+
+  private sanitizeInputs(): boolean {
+    if (!this.value) {
+      return false;
+    }
+
+    if (!['L', 'M', 'Q', 'H'].includes(this.errorCorrectionLevel)) {
+      this.warn('invalid input for errorCorrectionLevel');
+      return false;
+    }
+
+    this.margin = +this.margin;
+    if (isNaN(this.margin)) {
+      this.warn('invalid input for margin');
+      return false;
+    }
+
+    if (!this.color) {
+      this.warn('invalid input for color');
+      return false;
+    }
+
+    if (!this.backgroundColor) {
+      this.warn('invalid input for backgroundColor');
+      return false;
+    }
+
+    return true;
+  }
+
+  private warn(message: string): void {
+    console.warn('[ngx-qrcode-svg]', message);
   }
 }
