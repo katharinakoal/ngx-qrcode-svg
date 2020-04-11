@@ -1,6 +1,6 @@
 <qrcode-svg
   class="qrcode"
-  [value]="value"
+  [value]="qrCodeValue"
   [errorCorrectionLevel]="errorCorrectionLevel"
   [margin]="margin"
   [color]="color"
@@ -9,7 +9,7 @@
 <form>
   <div class="form-element">
     <label for="value">Input</label>
-    <input id="value" [(ngModel)]="value" name="value" type="text" />
+    <input id="value" [(ngModel)]="qrCodeValue" name="qrCodeValue" type="text" />
   </div>
 
   <div class="form-element">

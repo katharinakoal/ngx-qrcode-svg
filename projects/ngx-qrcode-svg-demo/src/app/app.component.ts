@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  value = 'test';
+  qrCodeValue = 'test';
   errorCorrectionLevel = 'Q';
   margin = 0;
   color = '#000000';
-  backgroundColor = '#ffffff';
+  backgroundColor = 'yellow';
 }
