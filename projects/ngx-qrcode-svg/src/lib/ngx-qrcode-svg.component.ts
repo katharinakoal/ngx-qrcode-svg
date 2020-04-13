@@ -1,6 +1,6 @@
 import { Component, Input, ElementRef, OnChanges, Renderer2 } from '@angular/core';
 import QRCode from 'qrcode';
-import type { ErrorCorrectionLevel, QRCodeData } from './ngx-qrcode-svg.types';
+import type { ErrorCorrectionLevel, QRCodeData, Options } from './ngx-qrcode-svg.types';
 
 @Component({
   selector: 'qrcode-svg',
@@ -17,13 +17,17 @@ import type { ErrorCorrectionLevel, QRCodeData } from './ngx-qrcode-svg.types';
 })
 export class QRCodeSVGComponent implements OnChanges {
   @Input() value: string;
-  @Input() errorCorrectionLevel?: ErrorCorrectionLevel = 'Q';
-  // tslint:disable-next-line: no-inferrable-types
-  @Input() margin?: number = 0;
-  // tslint:disable-next-line: no-inferrable-types
-  @Input() color?: string = 'black';
-  // tslint:disable-next-line: no-inferrable-types
-  @Input() backgroundColor?: string = 'white';
+  @Input() errorCorrectionLevel?: ErrorCorrectionLevel;
+  @Input() margin?: number;
+  @Input() color?: string;
+  @Input() backgroundColor?: string;
+
+  private readonly default: Options = {
+    errorCorrectionLevel: 'Q',
+    margin: 0,
+    color: 'black',
+    backgroundColor: 'white',
+  };
 
   constructor(private renderer: Renderer2, private element: ElementRef) {}
 
@@ -36,19 +40,21 @@ export class QRCodeSVGComponent implements OnChanges {
       this.renderer.removeChild(this.element.nativeElement, node)
     );
 
-    if (!this.sanitizeInputs()) {
+    if (!this.value) {
       return;
     }
 
-    const { modules }: QRCodeData = QRCode.create(this.value, {
-      errorCorrectionLevel: this.errorCorrectionLevel,
-      margin: this.margin,
+    const { errorCorrectionLevel, margin, color, backgroundColor } = this.sanitizeInputs();
+
+    const raw = QRCode.create(`${this.value}`, {
+      errorCorrectionLevel,
+      margin,
     });
-    this.renderSVG(modules.data, modules.size);
+    this.renderSVG(raw, margin, color, backgroundColor);
   }
 
-  private renderSVG(data: Uint8Array, size: number): void {
-    const elementSize = size + this.margin * 2;
+  private renderSVG(raw: QRCodeData, margin: number, color: string, backgroundColor: string): void {
+    const elementSize = raw.modules.size + margin * 2;
 
     const svgElement = this.renderer.createElement('svg', 'svg');
     this.renderer.setAttribute(svgElement, 'xmlns', 'http://www.w3.org/2000/svg');
@@ -57,18 +63,20 @@ export class QRCodeSVGComponent implements OnChanges {
 
     const backGroundElement = this.renderer.createElement('path', 'svg');
     this.renderer.setAttribute(backGroundElement, 'd', `M0 0h${elementSize}v${elementSize}H0z`);
-    this.renderer.setStyle(backGroundElement, 'fill', this.backgroundColor);
+    this.renderer.setStyle(backGroundElement, 'fill', backgroundColor);
     this.renderer.appendChild(svgElement, backGroundElement);
 
     const codeElement = this.renderer.createElement('path', 'svg');
-    this.renderer.setAttribute(codeElement, 'd', this.createPath(data, size, this.margin));
-    this.renderer.setStyle(codeElement, 'stroke', this.color);
+    this.renderer.setAttribute(codeElement, 'd', this.createPath(raw, margin));
+    this.renderer.setStyle(codeElement, 'stroke', color);
     this.renderer.appendChild(svgElement, codeElement);
 
     this.renderer.appendChild(this.element.nativeElement, svgElement);
   }
 
-  private createPath(data: Uint8Array, size: number, margin: number): string {
+  private createPath(raw: QRCodeData, margin: number): string {
+    const { data, size } = raw.modules;
+
     let path = '';
     let moveBy = 0;
     let newRow = false;
@@ -103,36 +111,19 @@ export class QRCodeSVGComponent implements OnChanges {
     return path;
   }
 
-  private sanitizeInputs(): boolean {
-    if (!this.value) {
-      return false;
-    }
+  private sanitizeInputs(): Options {
+    const errorCorrectionLevel = ['L', 'M', 'Q', 'H'].includes(this.errorCorrectionLevel)
+      ? this.errorCorrectionLevel
+      : this.default.errorCorrectionLevel;
 
-    if (!['L', 'M', 'Q', 'H'].includes(this.errorCorrectionLevel)) {
-      this.warn('invalid input for errorCorrectionLevel');
-      return false;
-    }
+    const margin =
+      !isNaN(parseFloat(this.margin as any)) && !isNaN(Number(this.margin))
+        ? Math.max(Number(this.margin), 0)
+        : this.default.margin;
 
-    this.margin = +this.margin;
-    if (isNaN(this.margin)) {
-      this.warn('invalid input for margin');
-      return false;
-    }
+    const color = this.color ?? this.default.color;
+    const backgroundColor = this.backgroundColor ?? this.default.backgroundColor;
 
-    if (!this.color) {
-      this.warn('invalid input for color');
-      return false;
-    }
-
-    if (!this.backgroundColor) {
-      this.warn('invalid input for backgroundColor');
-      return false;
-    }
-
-    return true;
-  }
-
-  private warn(message: string): void {
-    console.warn('[ngx-qrcode-svg]', message);
+    return { errorCorrectionLevel, margin, color, backgroundColor };
   }
 }
