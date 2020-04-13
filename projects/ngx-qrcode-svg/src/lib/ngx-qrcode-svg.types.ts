@@ -7,3 +7,10 @@ export type QRCodeData = {
   maskPattern: number; // Calculated Mask pattern
   segments: any; // Generated segments
 };
+
+export type Options = {
+  errorCorrectionLevel: ErrorCorrectionLevel;
+  margin: number;
+  color: string;
+  backgroundColor: string;
+};
