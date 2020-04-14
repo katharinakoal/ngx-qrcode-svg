@@ -18,13 +18,13 @@ import type { ErrorCorrectionLevel, QRCodeData, Options } from './ngx-qrcode-svg
 export class QRCodeSVGComponent implements OnChanges {
   @Input() value: string;
   @Input() errorCorrectionLevel?: ErrorCorrectionLevel;
-  @Input() margin?: number;
+  @Input() margin?: number | string;
   @Input() color?: string;
   @Input() backgroundColor?: string;
 
   readonly default: Options = {
     errorCorrectionLevel: 'Q',
-    margin: 0,
+    margin: 4,
     color: 'black',
     backgroundColor: 'white',
   };
