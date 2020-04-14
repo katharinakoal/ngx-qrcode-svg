@@ -17,6 +17,8 @@
     "build:lib:prod": "run-s \"ng build --project=ngx-qrcode-svg --prod\" copy-license copy-readme",
     "test:demo": "ng test --project=ngx-qrcode-svg-demo",
     "test:lib": "ng test --project=ngx-qrcode-svg",
+    "test": "run-p test:demo test:lib",
+    "build": "run-p build:demo build:lib",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "copy-license": "copy .\\LICENSE .\\dist\\ngx-qrcode-svg",
