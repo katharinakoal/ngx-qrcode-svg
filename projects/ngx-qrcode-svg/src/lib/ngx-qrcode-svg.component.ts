@@ -22,7 +22,7 @@ export class QRCodeSVGComponent implements OnChanges {
   @Input() color?: string;
   @Input() backgroundColor?: string;
 
-  private readonly default: Options = {
+  readonly default: Options = {
     errorCorrectionLevel: 'Q',
     margin: 0,
     color: 'black',
