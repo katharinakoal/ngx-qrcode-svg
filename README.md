@@ -72,19 +72,19 @@ The `qrcode-svg` component supports the following bindings:
 
 - `value: string` (required)
   - the content you want to display as QR code
-- `errorCorrectionLevel?: string` (optional, default: `'Q'`)
+- `errorCorrectionLevel: string` (optional, default: `'Q'`)
   - [error correction capability](https://www.qrcode.com/en/about/error_correction.html) controls the amount of redundant information to restore data if the code is dirty or damaged
   - Valid values: `'L'`, `'M'`, `'Q'`, `'H'`
   - If you need the type you can
     ```typescript
     import { ErrorCorrectionLevel } from 'ngx-qrcode-svg';
     ```
-- `margin?: number | string` (optional, default: `4`)
+- `margin: number | string` (optional, default: `4`)
   - the [margin](https://www.qrcode.com/en/howto/code.html#marginH2Title) is a clear area around a symbol where nothing is printed.
-- `color?: string` (optional, default: `'black'`)
+- `color: string` (optional, default: `'black'`)
   - color of the dark squares
   - you can provide any [CSS Color Value](https://www.w3schools.com/cssref/css_colors_legal.asp)
-- `backgroundColor?: string` (optional, default: `'white'`)
+- `backgroundColor: string` (optional, default: `'white'`)
   - color of the light squares
   - you can provide any [CSS Color Value](https://www.w3schools.com/cssref/css_colors_legal.asp)
 
