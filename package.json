@@ -1,16 +1,26 @@
 {
   "name": "ngx-qrcode-svg",
   "version": "0.0.0",
+  "description": "Angular component library to generate QR codes with SVG rendering",
+  "author": "Katharina Koal",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katharinakoal/ngx-qrcode-svg.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "run-p \"build:lib -- --watch\" serve:demo",
     "serve:demo": "ng serve --project=ngx-qrcode-svg-demo",
     "build:demo": "ng build --project=ngx-qrcode-svg-demo",
     "build:lib": "ng build --project=ngx-qrcode-svg",
+    "build:lib:prod": "run-s \"ng build --project=ngx-qrcode-svg --prod\" copy-license copy-readme",
     "test:demo": "ng test --project=ngx-qrcode-svg-demo",
     "test:lib": "ng test --project=ngx-qrcode-svg",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "copy-license": "copy .\\LICENSE .\\dist\\ngx-qrcode-svg",
+    "copy-readme": "copy .\\README.md .\\dist\\ngx-qrcode-svg"
   },
   "private": true,
   "dependencies": {
