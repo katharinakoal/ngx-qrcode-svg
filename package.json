@@ -1,6 +1,6 @@
 {
   "name": "ngx-qrcode-svg",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "description": "Angular component library to generate QR codes with SVG rendering",
   "author": "Katharina Koal",
   "license": "MIT",
