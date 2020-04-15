@@ -13,6 +13,7 @@ Angular component library to generate QR codes with SVG rendering.
 
 - [Features](#features)
 - [Quick example](#quick-example)
+- [Demo](#demo)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
@@ -29,6 +30,10 @@ Angular component library to generate QR codes with SVG rendering.
 ```html
 <qrcode-svg value="The content you want show as QR code"></qrcode-svg>
 ```
+
+## Demo
+
+**[See running demo here](https://katharinakoal.github.io/ngx-qrcode-svg/)**
 
 ## Installation
 
