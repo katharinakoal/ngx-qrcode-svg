@@ -44,8 +44,8 @@ jobs:
         run: npm run test:lib
       - name: Unit tests - demo app
         run: npm run test:demo
-      - name: E2E tests
-        run: npm run e2e
+      # - name: E2E tests
+      #   run: npm run e2e
 
   build:
     name: Build

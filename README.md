@@ -1,4 +1,4 @@
-![Node Continuous Integration](https://github.com/katharinakoal/ngx-qrcode-svg/workflows/Node%20Continuous%20Integration/badge.svg)
+![CI/CD](https://github.com/katharinakoal/ngx-qrcode-svg/workflows/CI/CD/badge.svg)
 [![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)]()
 [![commitizen](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)]()
 [![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)]()
