@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/katharinakoal/ngx-qrcode-svg/compare/v1.0.0...v1.0.1) (2020-04-15)
+
+
+### Bug Fixes
+
+* package build ([eaac835](https://github.com/katharinakoal/ngx-qrcode-svg/commit/eaac83548055b80c81d23018eda9623151300c6d))
+
 # 1.0.0 (2020-04-15)
 
 
