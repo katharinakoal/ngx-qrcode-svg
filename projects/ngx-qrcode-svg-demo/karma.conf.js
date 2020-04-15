@@ -25,14 +25,14 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: [process.env.CI ? 'ChromeHeadlessCI' : 'Chrome'],
     customLaunchers: {
       ChromeHeadlessCI: {
         base: 'ChromeHeadless',
         flags: ['--no-sandbox'],
       },
     },
-    singleRun: false,
+    singleRun: process.env.CI,
     restartOnFileChange: true,
   });
 };
