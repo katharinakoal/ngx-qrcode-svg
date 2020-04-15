@@ -1,0 +1,90 @@
+name: CI/CD
+
+on: push
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cache Node.js modules
+          uses: actions/cache@v1
+          with:
+            path: ~/.npm 
+            key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              ${{ runner.OS }}-node-
+              ${{ runner.OS }}-
+      - name: Install dependencies
+        run: npm ci
+      - name: Linting
+        run: npm run lint      
+
+  test:
+    name: Test
+    env:
+      CI: true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cache Node.js modules
+          uses: actions/cache@v1
+          with:
+            path: ~/.npm 
+            key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              ${{ runner.OS }}-node-
+              ${{ runner.OS }}-
+      - name: Install dependencies
+        run: npm ci
+      - name: Unit tests - library
+        run: npm run test:lib 
+      - name: Unit tests - demo app
+        run: npm run test:demo 
+      - name: E2E tests 
+        run: npm run e2e  
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cache Node.js modules
+          uses: actions/cache@v1
+          with:
+            path: ~/.npm 
+            key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              ${{ runner.OS }}-node-
+              ${{ runner.OS }}-
+      - name: Install dependencies
+        run: npm ci
+      - name: Build library
+        run: npm run build:lib
+      - name: Build demo app
+        run: npm run build:demo
+
+    deploy-demo:
+      name: Deploy Demo
+      runs-on: ubuntu-latest
+      needs: [lint, test, build]
+      if: github.ref == 'refs/heads/master'
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cache Node.js modules
+          uses: actions/cache@v1
+          with:
+            path: ~/.npm 
+            key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              ${{ runner.OS }}-node-
+              ${{ runner.OS }}-
+      - name: Install dependencies
+        run: npm ci
+      - name: Build demo app
+        run: npm run build:demo -- --prod
