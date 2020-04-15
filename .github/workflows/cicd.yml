@@ -90,3 +90,5 @@ jobs:
         run: npm run build:lib -- --prod
       - name: Deploy demo app
         run: npm run deploy:demo
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
