@@ -86,5 +86,5 @@ jobs:
             ${{ runner.OS }}-
       - name: Install dependencies
         run: npm ci
-      - name: Build demo app
-        run: npm run build:demo -- --prod
+      - name: Deploy demo app
+        run: npm run deploy:demo
