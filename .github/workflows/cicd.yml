@@ -10,17 +10,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Cache Node.js modules
-          uses: actions/cache@v1
-          with:
-            path: ~/.npm 
-            key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-            restore-keys: |
-              ${{ runner.OS }}-node-
-              ${{ runner.OS }}-
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
       - name: Install dependencies
         run: npm ci
       - name: Linting
-        run: npm run lint      
+        run: npm run lint
 
   test:
     name: Test
@@ -31,21 +31,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Cache Node.js modules
-          uses: actions/cache@v1
-          with:
-            path: ~/.npm 
-            key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-            restore-keys: |
-              ${{ runner.OS }}-node-
-              ${{ runner.OS }}-
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
       - name: Install dependencies
         run: npm ci
       - name: Unit tests - library
-        run: npm run test:lib 
+        run: npm run test:lib
       - name: Unit tests - demo app
-        run: npm run test:demo 
-      - name: E2E tests 
-        run: npm run e2e  
+        run: npm run test:demo
+      - name: E2E tests
+        run: npm run e2e
 
   build:
     name: Build
@@ -54,13 +54,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Cache Node.js modules
-          uses: actions/cache@v1
-          with:
-            path: ~/.npm 
-            key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-            restore-keys: |
-              ${{ runner.OS }}-node-
-              ${{ runner.OS }}-
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
       - name: Install dependencies
         run: npm ci
       - name: Build library
@@ -74,17 +74,17 @@ jobs:
       needs: [lint, test, build]
       if: github.ref == 'refs/heads/master'
       steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Cache Node.js modules
+        - name: Checkout
+          uses: actions/checkout@v2
+        - name: Cache Node.js modules
           uses: actions/cache@v1
           with:
-            path: ~/.npm 
+            path: ~/.npm
             key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
             restore-keys: |
               ${{ runner.OS }}-node-
               ${{ runner.OS }}-
-      - name: Install dependencies
-        run: npm ci
-      - name: Build demo app
-        run: npm run build:demo -- --prod
+        - name: Install dependencies
+          run: npm ci
+        - name: Build demo app
+          run: npm run build:demo -- --prod
