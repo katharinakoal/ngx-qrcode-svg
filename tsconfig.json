@@ -11,15 +11,9 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "lib": ["es2018", "dom"],
     "paths": {
-      "ngx-qrcode-svg": [
-        "dist/ngx-qrcode-svg/ngx-qrcode-svg",
-        "dist/ngx-qrcode-svg"
-      ]
+      "ngx-qrcode-svg": ["dist/ngx-qrcode-svg"]
     }
   },
   "angularCompilerOptions": {
