@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/katharinakoal/ngx-qrcode-svg/compare/v1.0.2...v1.1.0) (2020-04-16)
+
+
+### Features
+
+* **lib:** support angular v7 and v8 ([e10be31](https://github.com/katharinakoal/ngx-qrcode-svg/commit/e10be31c77b34367d15f7957f6a72f9cbaab6d46))
+
 ## [1.0.2](https://github.com/katharinakoal/ngx-qrcode-svg/compare/v1.0.1...v1.0.2) (2020-04-15)
 
 
