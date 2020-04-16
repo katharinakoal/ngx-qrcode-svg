@@ -1,6 +1,6 @@
 import { Component, Input, ElementRef, OnChanges, Renderer2 } from '@angular/core';
 import QRCode from 'qrcode';
-import type { ErrorCorrectionLevel, QRCodeData, Options } from './ngx-qrcode-svg.types';
+import { ErrorCorrectionLevel, QRCodeData, Options } from './ngx-qrcode-svg.types';
 
 @Component({
   selector: 'qrcode-svg',
