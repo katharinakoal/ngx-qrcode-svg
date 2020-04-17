@@ -41,7 +41,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Unit tests - library
-        run: npm run test:lib
+        run: npm run test:lib -- --code-coverage
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage/ngx-qrcode-svg/lcov.info
+          flags: unittests
       - name: Unit tests - demo app
         run: npm run test:demo
       # - name: E2E tests
