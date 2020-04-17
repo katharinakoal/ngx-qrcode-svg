@@ -1,4 +1,5 @@
 ![CI/CD](https://github.com/katharinakoal/ngx-qrcode-svg/workflows/CI/CD/badge.svg)
+[![codecov](https://codecov.io/gh/katharinakoal/ngx-qrcode-svg/branch/master/graph/badge.svg)](https://codecov.io/gh/katharinakoal/ngx-qrcode-svg)
 [![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)]()
 [![commitizen](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)]()
 [![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)]()
