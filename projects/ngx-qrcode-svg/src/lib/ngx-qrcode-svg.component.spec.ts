@@ -65,6 +65,26 @@ describe('QRCodeSVGComponent', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
+  it('should render new qr code when inputs change', () => {
+    const fixture = TestBed.createComponent(BasicTestHostComponent);
+    const host = fixture.componentInstance;
+    const component = host.qrCodeSVGComponent;
+    const createFn = spyOn(component as any, 'createQRCode').and.callThrough();
+    const clearFn = spyOn((component as any).renderer, 'removeChild').and.callThrough();
+
+    host.qrCodeValue = 'first value';
+    fixture.detectChanges();
+
+    expect(createFn).toHaveBeenCalled();
+    expect(clearFn).not.toHaveBeenCalled();
+
+    host.qrCodeValue = 'second value';
+    fixture.detectChanges();
+
+    expect(createFn).toHaveBeenCalled();
+    expect(clearFn).toHaveBeenCalled();
+  });
+
   it('should render svg without optional inputs', () => {
     const fixture = TestBed.createComponent(BasicTestHostComponent);
     const host = fixture.componentInstance;
