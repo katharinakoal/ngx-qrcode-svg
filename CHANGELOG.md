@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/katharinakoal/ngx-qrcode-svg/compare/v1.1.0...v1.1.1) (2020-04-19)
+
+
+### Bug Fixes
+
+* drop support for older angular versions ([b9a2964](https://github.com/katharinakoal/ngx-qrcode-svg/commit/b9a296455a3a90310208e55685ab850944a3d0fd))
+
 # [1.1.0](https://github.com/katharinakoal/ngx-qrcode-svg/compare/v1.0.2...v1.1.0) (2020-04-16)
 
 
