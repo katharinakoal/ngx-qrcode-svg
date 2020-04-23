@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/katharinakoal/ngx-qrcode-svg/compare/v1.1.1...v1.1.2) (2020-04-23)
+
+
+### Bug Fixes
+
+* update priority of ivy-specific entry-points ([e9f88de](https://github.com/katharinakoal/ngx-qrcode-svg/commit/e9f88de9118ee30ee24026611cc97fa9b8025d06))
+
 ## [1.1.1](https://github.com/katharinakoal/ngx-qrcode-svg/compare/v1.1.0...v1.1.1) (2020-04-19)
 
 
