@@ -6,9 +6,7 @@
     "qrcode": "^1.4.4"
   },
   "peerDependencies": {
-    "@angular/common": ">=9 <10",
-    "@angular/core": ">=9 <10",
-    "tslib": ">=1 <2"
+    "@angular/core": ">=8.2.14"
   },
   "author": "Katharina Koal",
   "license": "MIT",
@@ -30,6 +28,7 @@
     "qrcode",
     "qr-code",
     "angular",
+    "angular8",
     "angular9",
     "ng",
     "ngx",
