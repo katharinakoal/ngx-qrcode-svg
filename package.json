@@ -15,7 +15,7 @@
     "build:demo": "ng build --project=ngx-qrcode-svg-demo",
     "build:lib": "ng build --project=ngx-qrcode-svg",
     "build:lib:prod": "ng build --prod --project=ngx-qrcode-svg",
-    "prepare:lib:release": "run-s copy:license copy:readme build:lib:prod",
+    "prepare:lib:release": "run-s copy:readme copy:license build:lib:prod",
     "deploy:demo": "ng deploy --project=ngx-qrcode-svg-demo",
     "test:demo": "ng test --project=ngx-qrcode-svg-demo",
     "test:lib": "ng test --project=ngx-qrcode-svg",
