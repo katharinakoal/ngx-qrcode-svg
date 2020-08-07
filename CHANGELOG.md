@@ -1,3 +1,21 @@
+# [2.0.0](https://github.com/katharinakoal/ngx-qrcode-svg/compare/v1.1.4...v2.0.0) (2020-08-07)
+
+
+### Bug Fixes
+
+* **demo:** allow CommonJs import of `qrcode` ([44ff882](https://github.com/katharinakoal/ngx-qrcode-svg/commit/44ff882c5f6e5393cdd969e18b75ba170a279fde))
+
+
+### Features
+
+* enable to set colors by css ([4157ca2](https://github.com/katharinakoal/ngx-qrcode-svg/commit/4157ca231efc6bb53c7251b5f65abe1b5e77de3f))
+
+
+### BREAKING CHANGES
+
+* The `color` default changed from `black` to `currentcolor`. 
+The `backgroundColor` changed from `white` to `transparent`.
+
 ## [1.1.4](https://github.com/katharinakoal/ngx-qrcode-svg/compare/v1.1.3...v1.1.4) (2020-06-18)
 
 
