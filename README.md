@@ -98,7 +98,7 @@ The `qrcode-svg` component supports the following bindings:
 
 ### Set colors with plain css
 
-If you don't pass explicit values to the `color` oder `backgroundColor` inputs of this component, you can style your QR code with regular css like this:
+If you don't pass explicit values to the `color` or `backgroundColor` inputs of this component, you can style your QR code with regular css like this:
 
 ```html
 <qrcode-svg class="qrcode" value="The content you want show as QR code"></qrcode-svg>
