@@ -64,7 +64,8 @@
             "aot": true,
             "assets": ["projects/ngx-qrcode-svg-demo/src/favicon.ico", "projects/ngx-qrcode-svg-demo/src/assets"],
             "styles": ["projects/ngx-qrcode-svg-demo/src/styles.css"],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": ["qrcode"]
           },
           "configurations": {
             "production": {

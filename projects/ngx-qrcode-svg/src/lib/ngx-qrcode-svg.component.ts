@@ -12,6 +12,10 @@ import { ErrorCorrectionLevel, QRCodeData, Options } from './ngx-qrcode-svg.type
         width: 100%;
         height: 100%;
       }
+      svg {
+        display: block;
+        shape-rendering: crispEdges;
+      }
     `,
   ],
 })
@@ -25,8 +29,8 @@ export class QRCodeSVGComponent implements OnChanges {
   readonly default: Options = {
     errorCorrectionLevel: 'Q',
     margin: 4,
-    color: 'black',
-    backgroundColor: 'white',
+    color: 'currentcolor',
+    backgroundColor: 'transparent',
   };
 
   constructor(private renderer: Renderer2, private element: ElementRef) {}
@@ -59,7 +63,6 @@ export class QRCodeSVGComponent implements OnChanges {
     const svgElement = this.renderer.createElement('svg', 'svg');
     this.renderer.setAttribute(svgElement, 'xmlns', 'http://www.w3.org/2000/svg');
     this.renderer.setAttribute(svgElement, 'viewBox', `0 0 ${elementSize} ${elementSize}`);
-    this.renderer.setStyle(svgElement, 'shape-rendering', 'crispEdges');
 
     const backGroundElement = this.renderer.createElement('path', 'svg');
     this.renderer.setAttribute(backGroundElement, 'd', `M0 0h${elementSize}v${elementSize}H0z`);

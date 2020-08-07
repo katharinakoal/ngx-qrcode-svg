@@ -25,7 +25,7 @@ Angular component library to generate QR codes with SVG rendering.
 
 - **Scalable** high-quality QR code rendering
 - **Responsive** layout fills the containing element
-- **Customizable** with support for [CSS Color Values](https://www.w3schools.com/cssref/css_colors_legal.asp)
+- **Customizable** with plain css or [CSS Color Values](https://www.w3schools.com/cssref/css_colors_legal.asp)
 
 ## Quick example
 
@@ -89,12 +89,27 @@ The `qrcode-svg` component supports the following bindings:
     ```
 - `margin: number | string` (optional, default: `4`)
   - the [margin](https://www.qrcode.com/en/howto/code.html#marginH2Title) is a clear area around a symbol where nothing is printed.
-- `color: string` (optional, default: `'black'`)
+- `color: string` (optional, default: `'currentcolor'`)
   - color of the dark squares
   - you can provide any [CSS Color Value](https://www.w3schools.com/cssref/css_colors_legal.asp)
-- `backgroundColor: string` (optional, default: `'white'`)
+- `backgroundColor: string` (optional, default: `'transparent'`)
   - color of the light squares
   - you can provide any [CSS Color Value](https://www.w3schools.com/cssref/css_colors_legal.asp)
+
+### Set colors with plain css
+
+If you don't pass explicit values to the `color` or `backgroundColor` inputs of this component, you can style your QR code with regular css like this:
+
+```html
+<qrcode-svg class="qrcode" value="The content you want show as QR code"></qrcode-svg>
+```
+
+```css
+.qrcode {
+  color: black;
+  background: white;
+}
+```
 
 ## Credits
 
